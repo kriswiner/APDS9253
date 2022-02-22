@@ -69,13 +69,13 @@ void APDS9253::getRGBiRdata(uint32_t * destination)
 {
   uint8_t rawData[3] = {0, 0, 0};
      _i2c_bus->readBytes(APDS9253_ADDR, APDS9253_LS_DATA_IR_0, 3, &rawData[0]);  
-     destination[3] = (((uint32_t) (rawData[3] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // ir
+     destination[3] = (((uint32_t) (rawData[2] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // ir
      _i2c_bus->readBytes(APDS9253_ADDR, APDS9253_LS_DATA_BLUE_0, 3, &rawData[0]);  
-     destination[2] = (((uint32_t) (rawData[3] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // blue
+     destination[2] = (((uint32_t) (rawData[2] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // blue
      _i2c_bus->readBytes(APDS9253_ADDR, APDS9253_LS_DATA_GREEN_0, 3, &rawData[0]);  
-     destination[1] = (((uint32_t) (rawData[3] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // green
+     destination[1] = (((uint32_t) (rawData[2] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // green
      _i2c_bus->readBytes(APDS9253_ADDR, APDS9253_LS_DATA_RED_0, 3, &rawData[0]);  
-     destination[0] = (((uint32_t) (rawData[3] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // red
+     destination[0] = (((uint32_t) (rawData[2] & 0x0F)) << 16)  |  (((uint32_t) rawData[1]) << 8)  | ((uint32_t) rawData[0]);    // red
 }
 
 
